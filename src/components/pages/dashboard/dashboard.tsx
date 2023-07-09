@@ -1,4 +1,4 @@
-import { Header, PieChartGraph, Stat } from "../..";
+import { Header, PieChartGraph, Stat, Trends } from "../..";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import { IoDocuments } from "react-icons/io5";
@@ -16,6 +16,24 @@ export const Dashboard = () => {
     { topic: "Sexual Reproduction", percent: 8.3445 },
     { topic: "Others", percent: 100 },
   ];
+  const trends = [
+    {
+      trend: "#Fertility",
+      numEnquirers: 3546,
+    },
+    {
+      trend: "Contraceptive Methods",
+      numEnquirers: 2354,
+    },
+    {
+      trend: "#Menstruation",
+      numEnquirers: 3546,
+    },
+    {
+      trend: "#Hormones",
+      numEnquirers: 3546,
+    },
+  ];
 
   const enquiries = [
     {
@@ -29,7 +47,7 @@ export const Dashboard = () => {
       id: "2",
       enquiry: "Where do I get contraceptive pills?",
       tags: "fertility, contraceptive",
-      by: "John Doe",
+      by: "Mary Jane",
       createdAt: "2023-08-01",
     },
   ];
@@ -114,7 +132,10 @@ export const Dashboard = () => {
       <div className="flex justify-center pt-8">
         <Header title={"My Assists by topics"} icon />
       </div>
-      <PieChartGraph data={data} colors={colors} />
+      <div className="flex items-center justify-between">
+        <PieChartGraph data={data} colors={colors} />
+        <Trends trends={trends} />
+      </div>
       <Header title="Questions" icon={<BsQuestionLg className="w-6" />} />
       <Table
         columns={columns}
