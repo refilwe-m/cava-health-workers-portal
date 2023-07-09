@@ -4,7 +4,7 @@ import { HeaderProps } from "./types";
 
 export const Header: FC<HeaderProps> = ({ icon, title }) => {
   return (
-    <header className="header text-primary">
+    <header className="header text-primary pt-10 pb-6">
       <section className="flex items-center gap-2">
         {icon}
         <h1 className="w-full text-3xl">{title}</h1>

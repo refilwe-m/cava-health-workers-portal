@@ -6,6 +6,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { BsQuestionLg } from "react-icons/bs";
 import { usePagination } from "../../../hooks";
 import { Table } from "../../atoms/table/table";
+import {MdFeedback} from "react-icons/md";
 
 export const Dashboard = () => {
   const colors = ["#FFC700", "#FF0000", "#00FF00", "#0000FF", "#FF00FF"];
@@ -49,6 +50,31 @@ export const Dashboard = () => {
       tags: "fertility, contraceptive",
       by: "Mary Jane",
       createdAt: "2023-08-01",
+    },{
+      id: "3",
+      enquiry: "I think I'm pregnant, what should I do?",
+      tags: "fertility, contraceptive",
+      by: "Jane Doe",
+      createdAt: "2023-08-01",
+    },
+  ];
+
+  const feedbacks = [
+    {
+      id: "1",
+      feedback:
+        "Dr Mashile is an extemely cool doctor, she always makes you smile",
+      by: "Elizabeth Holmes",
+    },{
+      id: "2",
+      feedback:
+        "Dr. Mashile is an amazing doctor who genuinely cares about her patients. She always makes me feel comfortable and valued during my appointments. Her warm demeanor and excellent communication skills create a welcoming environment.",
+      by: "Gugu Mokwena",
+    },{
+      id: "3",
+      feedback:
+        "While Dr. Mashile is knowledgeable, I sometimes feel rushed during my appointments. It seems like she has a tight schedule and doesn't spend enough time discussing my concerns in detail. I wish she could allocate more time for each patient.",
+      by: "Emily Mashiane",
     },
   ];
 
@@ -59,8 +85,15 @@ export const Dashboard = () => {
     by: string;
     createdAt: string;
   };
-  const columnHelper = createColumnHelper<Enquiry>();
 
+  type Feedback = {
+    id: string;
+    feedback: string;
+    by: string;
+  };
+
+  const columnHelper = createColumnHelper<Enquiry>();
+  const columnHelperF = createColumnHelper<Feedback>();
   const columns = [
     columnHelper.accessor("id", {
       cell: (info) => info.getValue(),
@@ -87,6 +120,21 @@ export const Dashboard = () => {
           </span>
         );
       },
+    }),
+  ];
+
+  const columnsFeedback = [
+    columnHelperF.accessor("id", {
+      cell: (info) => info.getValue(),
+      header: () => <span>ID</span>,
+    }),
+    columnHelperF.accessor("by", {
+      cell: (info) => info.getValue(),
+      header: () => <span>Name</span>,
+    }),
+    columnHelperF.accessor("feedback", {
+      cell: (info) => info.getValue(),
+      header: () => <span>Feedback</span>,
     }),
   ];
 
@@ -140,6 +188,16 @@ export const Dashboard = () => {
       <Table
         columns={columns}
         data={enquiries || []}
+        isLoading={false}
+        pagination={pagination}
+        setPagination={setPagination}
+        pageCount={1}
+      />
+
+      <Header title="Feedback" icon={<MdFeedback className="w-6" />} />
+      <Table
+        columns={columnsFeedback}
+        data={feedbacks || []}
         isLoading={false}
         pagination={pagination}
         setPagination={setPagination}
