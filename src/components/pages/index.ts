@@ -1,1 +1,1 @@
-//I consist of pages
+export * from "./dashboard/dashboard";
