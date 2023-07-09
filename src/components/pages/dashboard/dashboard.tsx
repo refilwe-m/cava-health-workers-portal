@@ -6,7 +6,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { BsQuestionLg } from "react-icons/bs";
 import { usePagination } from "../../../hooks";
 import { Table } from "../../atoms/table/table";
-import {MdFeedback} from "react-icons/md";
+import { MdFeedback } from "react-icons/md";
 
 export const Dashboard = () => {
   const colors = ["#FFC700", "#FF0000", "#00FF00", "#0000FF", "#FF00FF"];
@@ -50,7 +50,8 @@ export const Dashboard = () => {
       tags: "fertility, contraceptive",
       by: "Mary Jane",
       createdAt: "2023-08-01",
-    },{
+    },
+    {
       id: "3",
       enquiry: "I think I'm pregnant, what should I do?",
       tags: "fertility, contraceptive",
@@ -65,12 +66,14 @@ export const Dashboard = () => {
       feedback:
         "Dr Mashile is an extemely cool doctor, she always makes you smile",
       by: "Elizabeth Holmes",
-    },{
+    },
+    {
       id: "2",
       feedback:
         "Dr. Mashile is an amazing doctor who genuinely cares about her patients. She always makes me feel comfortable and valued during my appointments. Her warm demeanor and excellent communication skills create a welcoming environment.",
       by: "Gugu Mokwena",
-    },{
+    },
+    {
       id: "3",
       feedback:
         "While Dr. Mashile is knowledgeable, I sometimes feel rushed during my appointments. It seems like she has a tight schedule and doesn't spend enough time discussing my concerns in detail. I wish she could allocate more time for each patient.",
@@ -116,7 +119,9 @@ export const Dashboard = () => {
       cell: () => {
         return (
           <span>
-            <button>Assign to me</button>
+            <button className="text-xs text-blue-500 hover:underline">
+              Assign to me
+            </button>
           </span>
         );
       },
