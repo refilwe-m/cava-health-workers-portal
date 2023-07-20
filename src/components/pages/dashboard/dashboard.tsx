@@ -7,16 +7,19 @@ import { BsQuestionLg } from "react-icons/bs";
 import { usePagination } from "../../../hooks";
 import { Table } from "../../atoms/table/table";
 import { MdFeedback } from "react-icons/md";
+import { useState } from "react";
 
 export const Dashboard = () => {
   const colors = ["#FFC700", "#FF0000", "#00FF00", "#0000FF", "#FF00FF"];
   const data = [
-    { topic: "Fertility", percent: 26.34 },
-    { topic: "Menstruation", percent: 45.45 },
-    { topic: "Contraceptive Methods", percent: 12.47 },
-    { topic: "Sexual Reproduction", percent: 8.3445 },
-    { topic: "Others", percent: 100 },
+    { topic: "Fertility", percent: 26 },
+    { topic: "Menstruation", percent: 45 },
+    { topic: "Contraceptive Methods", percent: 12 },
+    { topic: "Sexual Reproduction", percent: 8 },
+    { topic: "Others", percent: 8 },
   ];
+
+  const [pendingTasks, setPendingTasks] = useState(2);
   const trends = [
     {
       trend: "#Fertility",
@@ -119,7 +122,10 @@ export const Dashboard = () => {
       cell: () => {
         return (
           <span>
-            <button className="text-xs text-blue-500 hover:underline">
+            <button
+              className="text-xs text-blue-500 hover:underline"
+              onClick={() => setPendingTasks(pendingTasks + 1)}
+            >
               Assign to me
             </button>
           </span>
@@ -164,7 +170,7 @@ export const Dashboard = () => {
             className="w-1/4"
             icon={<AiOutlineStar className="w-6" />}
             title="Pending Tasks"
-            total={2 || 0}
+            total={pendingTasks}
           />
 
           <Stat

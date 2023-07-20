@@ -11,6 +11,7 @@ export const Trends: FC<TrendsProps> = ({ trends }) => {
       <div className="flex flex-col gap-2 ">
         {map(trends, (currTrend: TrendProps) => (
           <Trend
+            key={currTrend.trend}
             trend={currTrend.trend}
             numEnquirers={currTrend.numEnquirers}
           />

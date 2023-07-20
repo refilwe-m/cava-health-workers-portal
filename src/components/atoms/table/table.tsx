@@ -54,7 +54,7 @@ export const Table = <T extends Record<string, unknown>>({
           </thead>
           <tbody>
             {instance.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="odd:bg-gray-100">
+              <tr key={row.id} className="odd:bg-purple-100">
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="p-2">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
